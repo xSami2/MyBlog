@@ -1,6 +1,8 @@
 <?php
 use App\Models\Post;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,18 +16,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {  // Which Dir your in
-    
-    return view('posts',[
+     return view('posts',[
         'posts' => Post::all()
-    ]); // which file to Load
+    ]);
 });
-Route::get('/post/{post}', function ($slug) {  // Which Dir your in
-  
-     
-  
-  
-    return view('post',[
-    'post'=> Post::find($slug)
-   ]);
-   
-})->where('post', '[A-z_/-]+');
+Route::get('posts/{post}', function ($slug) {
+
+    return view('post', [
+
+        'post' => Post::find($slug)
+
+    ]);
+
+})->where('post', '[A-z_\-]+');
