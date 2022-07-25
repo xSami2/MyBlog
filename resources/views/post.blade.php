@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('components.layout')
 
 @section('content')
     <article>
@@ -6,7 +6,8 @@
             {{$post->title}}
         </h1>
         <p>
-      By <a href="#">{{$post->user->name}}</a> In<a href="/categories/{{$post->category->slug}}">  {{ $post->category->name }}  </a>
+            By <a href="/authors/{{$post->author->username}}">{{$post->author->name}}</a> In<a
+                href="/categories/{{$post->category->slug}}">  {{ $post->category->name }}  </a>
         </p>
         <div>
             {!! $post->body !!}

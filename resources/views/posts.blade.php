@@ -1,26 +1,28 @@
-@extends('layout')
+<x-layout >
+    @include('_posts-header')
 
-@section('content')
-    @foreach($posts as $post)
+    <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+         <x-post-featured-card/>
 
-        <article>
+        <div class="lg:grid lg:grid-cols-2">
 
-            <h1>
-                <a href="/posts/{{$post->slug}}">
-                {{$post->title}}
+            <x-post-card/>
+            <x-post-card/>
 
-            </h1>
-            <p>
-                <a href="/categories/{{$post->category->slug}}">  {{ $post->category->name }}  </a>
-            </p>
-            </a>
-            <div>
-                {{$post->excerpt}}
-            </div>
-        </article>
+        </div>
 
-    @endforeach
+        <div class="lg:grid lg:grid-cols-3">
 
+      <x-post-card/>
+            <x-post-card/>
+            <x-post-card/>
+
+        </div>
+    </main>
 
 
-@endsection
+</x-layout>
+
+
+
+
