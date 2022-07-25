@@ -16,9 +16,9 @@ use App\Models\Category;
 |
 */
 
-Route::get('/', function () {  // Which Dir your in
+Route::get('/', function () {
      return view('posts',[
-        'posts' => Post::all()
+        'posts' => Post::with('category')->get()
     ]);
 });
 Route::get('posts/{post:slug}', function (Post $post) {
