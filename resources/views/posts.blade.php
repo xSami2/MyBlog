@@ -1,28 +1,15 @@
-<x-layout >
-    @include('_posts-header')
+<x-layout>
 
-    <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
-         <x-post-featured-card/>
+  @include('_posts-header')
 
-        <div class="lg:grid lg:grid-cols-2">
+  <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
 
-            <x-post-card/>
-            <x-post-card/>
+    @if ($posts->count())
+      <x-posts-grid :posts="$posts" />
+    @else
+      <p class='text-center'>No posts yet, please check back later.</p>
+    @endif
 
-        </div>
-
-        <div class="lg:grid lg:grid-cols-3">
-
-      <x-post-card/>
-            <x-post-card/>
-            <x-post-card/>
-
-        </div>
-    </main>
-
+  </main>
 
 </x-layout>
-
-
-
-
