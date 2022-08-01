@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,6 +31,12 @@ class Post extends Model
                 $query->where('username', $author)));
 
 
+    }
+
+
+    public function  comments() // Pull All Comment For Spifece Post
+    {
+        return $this->hasMany(Comment::class);   // Post Has Many Comments
     }
 
     public function category()
