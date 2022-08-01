@@ -19,7 +19,13 @@ Route::get('posts/{post:slug}', [PostController::class , 'show']);
 
 Route::get('register',[RegisterController::class , 'create'] )->middleware('guest'); // Are you New User or No ? , Only [Guest] can Access this Route
 Route::post('register',[RegisterController::class , 'store'] )->middleware('guest');
-Route::post('logout',[SessionController::class ,'destroy']);
+
+Route::get('login',[SessionController::class ,'create'])->middleware("guest");  // Redercit to Login page
+Route::post('login',[SessionController::class ,'store'])->middleware("guest");  // Auth To log in
+
+
+
+Route::post('logout',[SessionController::class ,'destroy'])->middleware('auth');
 
 
 
