@@ -24,9 +24,9 @@ class RegisterController extends Controller
             'password'=>['required' , 'max:255' , 'min:3']  // Another Way  | Password Bcrypt in User.php
         ]);
 
-           User::create($attributes);
+           $user = User::create($attributes);   // Create User Var
 
-
+           auth()->login($user);  // Login the User
 
            return redirect('/')->with('success' , 'Your Account has been created');  // success Massage
 
