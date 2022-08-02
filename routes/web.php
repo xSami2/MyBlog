@@ -13,6 +13,27 @@ use App\Models\Category;
 
 
 
+Route::post('newsletter',function (){
+        request()->validate(['email'=> 'required|email']);
+    $mailchimp = new \MailchimpMarketing\ApiClient();
+
+    $mailchimp->setConfig([
+        'apiKey' => config('services.mailchimp.key'),   // Extract The api key
+        'server' => 'us17'
+    ]);
+    try {
+
+        $mailchimp->lists->addListMember('a4f82592d4',[
+            'email_address' => request('email'),
+            'status' => 'subscribed'
+        ]);
+    } catch (\Exception $e){
+        return redirect('/')
+            ->with('success','Provide Correct Email Pleases');
+    }
+    return redirect('/')
+        ->with('success','Your are now signed up with our newsletter');
+});
 
 Route::get('/', [PostController::class,'index'])->name('home');
 Route::get('posts/{post:slug}', [PostController::class , 'show']);
