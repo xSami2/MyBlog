@@ -9,7 +9,7 @@
                     <img src="/images/illustration-1.png" alt="" class="rounded-xl">
 
                     <p class="mt-4 block text-gray-400 text-xs">
-                        Published <time>{{$post->created_at->diffForHumans()}}</time>
+                        Published <time>{{$post->created_at->Format("F j, Y, g:i a")}}</time>
                     </p>
 
                     <div class="flex items-center lg:justify-center text-sm mt-4">
@@ -56,9 +56,10 @@
 
                     </div>
                     <section class=" col-span-8 col-start-5 mt-10 space-y-6">
+                        @auth()
+                        <x-panel>
+                        <form method="POST" action="/posts/{{$post->slug}}/comments"  >
 
-                        <form method="POST" action="" class="" >
-                                     <x-panel>
                                  @csrf
                           <header class="flex items-center  ">
 
@@ -70,7 +71,12 @@
 
                             <div class="mt-7 ">
 
-                                <textarea name="body" id="" class="w-full text-sm focus:outline-none focus:ring"  rows="5" PLACEHOLDER=" Quick Think of Something to say"></textarea>
+                                <textarea
+                                    name="body"
+                                    class="w-full text-sm focus:outline-none focus:ring"
+                                    rows="5"
+                                    PLACEHOLDER=" Quick Think of Something to say">
+                                </textarea>
 
                             </div>
                               <div class="flex justify-end mt-6 pt-6 border-t border-gray-200 ">
@@ -78,6 +84,12 @@
                               </div>
                         </form>
                         </x-panel>
+
+                        @else
+                           <p class="font-semibold">
+                               <a href="/register" class="hover:underline">Register </a> Or <a href="/login" class="hover:underline">Log in </a> To Comment
+                           </p>
+                        @endauth
                         @foreach($post->comments as $comment)
                        <x-post-comment :comment="$comment" />
                         @endforeach
