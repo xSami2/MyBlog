@@ -10,23 +10,16 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use App\Models\Category;
-
+use App\Services\Newsletter;
 
 
 Route::post('newsletter',function (){
         request()->validate(['email'=> 'required|email']);
-    $mailchimp = new \MailchimpMarketing\ApiClient();
 
-    $mailchimp->setConfig([
-        'apiKey' => config('services.mailchimp.key'),   // Extract The api key
-        'server' => 'us17'
-    ]);
     try {
 
-        $mailchimp->lists->addListMember('a4f82592d4',[
-            'email_address' => request('email'),
-            'status' => 'subscribed'
-        ]);
+        ( new Newsletter())->subscribe(request('email') ); // Do it In episode 60
+
     } catch (\Exception $e){
         return redirect('/')
             ->with('success','Provide Correct Email Pleases');
@@ -48,6 +41,8 @@ Route::post('logout',[SessionController::class ,'destroy'])->middleware('auth');
 
 Route::post('posts/{post:slug}/comments',[PostCommentsController::class , 'store'] ); // Create Route to Store The Comments
 
+Route::get('admin/posts/create' , [PostController::class , 'create'])->middleware('admin');
+Route::post('admin/posts' , [PostController::class , 'store'])->middleware('admin');
 
 
 

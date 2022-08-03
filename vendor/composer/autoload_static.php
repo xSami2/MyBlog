@@ -521,6 +521,10 @@ class ComposerStaticInit745a19558466195178f7261c308b64f4
             array (
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
+            'Mailchimp' => 
+            array (
+                0 => __DIR__ . '/..' . '/mailchimp/mailchimp/src',
+            ),
         ),
     );
 
@@ -550,6 +554,7 @@ class ComposerStaticInit745a19558466195178f7261c308b64f4
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Services\\Newsletter' => __DIR__ . '/../..' . '/app/Services/Newsletter.php',
         'App\\View\\Components\\CategoryDropdown' => __DIR__ . '/../..' . '/app/View/Components/CategoryDropdown.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
@@ -3069,6 +3074,7 @@ class ComposerStaticInit745a19558466195178f7261c308b64f4
         'League\\MimeTypeDetection\\GeneratedExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php',
         'League\\MimeTypeDetection\\MimeTypeDetector' => __DIR__ . '/..' . '/league/mime-type-detection/src/MimeTypeDetector.php',
         'League\\MimeTypeDetection\\OverridingExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/OverridingExtensionToMimeTypeMap.php',
+        'Mailchimp' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp.php',
         'MailchimpMarketing\\ApiClient' => __DIR__ . '/..' . '/mailchimp/marketing/lib/ApiClient.php',
         'MailchimpMarketing\\ApiException' => __DIR__ . '/..' . '/mailchimp/marketing/lib/ApiException.php',
         'MailchimpMarketing\\Api\\AccountExportApi' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Api/AccountExportApi.php',
@@ -3100,6 +3106,20 @@ class ComposerStaticInit745a19558466195178f7261c308b64f4
         'MailchimpMarketing\\Configuration' => __DIR__ . '/..' . '/mailchimp/marketing/lib/Configuration.php',
         'MailchimpMarketing\\HeaderSelector' => __DIR__ . '/..' . '/mailchimp/marketing/lib/HeaderSelector.php',
         'MailchimpMarketing\\ObjectSerializer' => __DIR__ . '/..' . '/mailchimp/marketing/lib/ObjectSerializer.php',
+        'Mailchimp_Campaigns' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Campaigns.php',
+        'Mailchimp_Conversations' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Conversations.php',
+        'Mailchimp_Ecomm' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Ecomm.php',
+        'Mailchimp_Folders' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Folders.php',
+        'Mailchimp_Gallery' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Gallery.php',
+        'Mailchimp_Goal' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Goal.php',
+        'Mailchimp_Helper' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Helper.php',
+        'Mailchimp_Lists' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Lists.php',
+        'Mailchimp_Mobile' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Mobile.php',
+        'Mailchimp_Neapolitan' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Neapolitan.php',
+        'Mailchimp_Reports' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Reports.php',
+        'Mailchimp_Templates' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Templates.php',
+        'Mailchimp_Users' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Users.php',
+        'Mailchimp_Vip' => __DIR__ . '/..' . '/mailchimp/mailchimp/src/Mailchimp/Vip.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',

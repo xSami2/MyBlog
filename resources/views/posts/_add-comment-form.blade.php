@@ -14,13 +14,12 @@
             <div class="mt-7 ">
 
                                 <textarea
-
                                     name="body"
                                     class="w-full text-sm focus:outline-none focus:ring"
                                     rows="5"
-                                    PLACEHOLDER=" Quick Think of Something to say"
-                                    required>
-                                </textarea>
+                                    placeholder=" Quick Think of Something to say"
+                                    required></textarea>
+
                 @error('body')
                 <span class="text-xs text-red-500 font-bold"> {{$message}}</span>
                 @enderror
