@@ -44,16 +44,13 @@ Route::post('posts/{post:slug}/comments',[PostCommentsController::class , 'store
 
 
 // Admin
-Route::get('admin/posts/create' , [AdminPostController::class , 'create'])->middleware('admin');
-Route::post('admin/posts' , [AdminPostController::class , 'store'])->middleware('admin');
-Route::get('admin/posts' ,[AdminPostController::class , 'index'])->middleware('admin');
-Route::get('admin/posts/{post}/edit' , [AdminPostController::class , 'edit'])->middleware('admin'); // To  Page Edit Post
-Route::patch('admin/posts/{post}' , [AdminPostController::class , 'update'])->middleware('admin'); // To Edit Post
-Route::delete('admin/posts/{post}' , [AdminPostController::class , 'destroy'])->middleware('admin'); // To delete Post
 
-
-
-
+Route::post('admin/posts', [AdminPostController::class, 'store'])->middleware('admin');
+Route::get('admin/posts/create', [AdminPostController::class, 'create'])->middleware('admin');
+Route::get('admin/posts', [AdminPostController::class, 'index'])->middleware('admin');
+Route::get('admin/posts/{post}/edit', [AdminPostController::class, 'edit'])->middleware('admin');
+Route::patch('admin/posts/{post}', [AdminPostController::class, 'update'])->middleware('admin');
+Route::delete('admin/posts/{post}', [AdminPostController::class, 'destroy'])->middleware('admin');
 
 
 

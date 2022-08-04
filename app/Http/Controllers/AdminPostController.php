@@ -27,21 +27,17 @@ class AdminPostController extends Controller
 
         $attributes = request();
         $attributes['slug'] =  \Illuminate\Support\Str::slug(request('title'));
-
-
-
         $attributes = request()->validate([
-            'title'=> 'required',
-            'thumbnail' => ['required' , 'image']    ,
-            'slug' => [Rule::unique('posts','slug')],
+            'title' => 'required',
+            'thumbnail' => 'required|image',
+            'slug' => [Rule::unique('posts', 'slug')],
             'excerpt' => 'required',
-            'body'=>'required',
-            'category_id' =>['required' , Rule::exists('categories' , 'id')]
+            'body' => 'required',
+            'category_id' => ['required', Rule::exists('categories', 'id')]
         ]);
 
         $attributes['user_id'] = auth()->id();
-
-        $attributes['thumbnail'] = request()->file('thumbnail')->store("thumbnails");
+        $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 
         Post::create($attributes);
 
@@ -79,13 +75,13 @@ class AdminPostController extends Controller
         }
 
         $post->update($attributes);
-        return back()->with('success' , ' Post Updated');
+        return redirect('/')->with('success' , ' Post Updated');
     }
 
     public function destroy(Post $post )  // Delete the post
     {
         $post->delete();
-        return back()->with('success' , ' Post Deleted');
+        return redirect('/')->with('success' , ' Post Deleted');
 
     }
 }
