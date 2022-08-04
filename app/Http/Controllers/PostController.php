@@ -33,24 +33,31 @@ class PostController extends Controller
     }
     public function store()
     {
+
         $attributes = request();
-
-
-
         $attributes['slug'] =  \Illuminate\Support\Str::slug(request('title'));
+
+
 
         $attributes = request()->validate([
            'title'=> 'required',
+            'thumbnail' => ['required' , 'image']    ,
             'slug' => [Rule::unique('posts','slug')],
            'excerpt' => 'required',
             'body'=>'required',
             'category_id' =>['required' , Rule::exists('categories' , 'id')]
         ]);
+
         $attributes['user_id'] = auth()->id();
+
+        $attributes['thumbnail'] = request()->file('thumbnail')->store("thumbnails");
 
         Post::create($attributes);
 
+
         return redirect('/')->with('success' , 'Your Post Was Published Successfully');
+
+
     }
 
 
