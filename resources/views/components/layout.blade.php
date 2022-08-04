@@ -21,24 +21,32 @@
                 </a>
             </div>
 
-            <div class="mt-8 md:mt-0 flex items-center">
+            <div class=" mt-8 md:mt-0  flex items-center">
                 @auth()
-                    <span class="text-xs font-bold  "> Welcome , {{auth()->user()->name}}</span>
-                    <form method="POST" action="/logout" class="text-xs font-semibold text-blue-500 ml-6">
-                        @csrf
-                        <button type="submit"> Log out</button>
+                    <x-dropdown>
+                        <x-slot name="trigger">
+                            <button  class="text-xs font-bold pr-3 "> Welcome , {{auth()->user()->name}}</button>
+                        </x-slot>
 
-                    </form>
+                   <x-dropdown-item href="/admin/dashbord"> Dash Board </x-dropdown-item>
+                   <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')"> New Post </x-dropdown-item>
+                   <x-dropdown-item href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()"> Log Out </x-dropdown-item>
+
+                   <form id="logout-form" method="POST" action="/logout" class="hidden ">@csrf</form>
+
+                    </x-dropdown>
+            </div>
+
+
                 @else
-                <a href="/register" class="text-xs font-bold uppercase">Register</a>
-                    <a href="/login" class="text-xs ml-6 font-bold uppercase">Log In</a>
+                <a href="/register" class="text-xs font-bold uppercase">Register</a><a href="/login" class="text-xs ml-6 font-bold uppercase">Log In</a>
                 @endauth
 
 
                 <a href="#newsletter" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Subscribe for Updates
                 </a>
-            </div>
+
         </nav>
 
         {{ $slot }}
