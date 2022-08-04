@@ -25,7 +25,7 @@
                 @enderror
 
             </div>
-           <x-submit-button>Post</x-submit-button>
+            <x-form.button> Submit </x-form.button>
         </form>
     </x-panel>
 
