@@ -7,15 +7,15 @@
             <form method='POST' action="/login " class="mt-10">
 
                 @csrf
-                <x-form.input name="email" type="email" autocomplete="username"/>
+                <x-form.input name="email" type="email" autocomplete="username" />
 
-                <x-form.input name="password" type="password" autocomplete="password"/>
+                <x-form.input name="password" type="password" autocomplete="password" />
 
 
 
                 <x-form.button> Log in </x-form.button>
 
-
+            </form>
 
 
         </main>

@@ -4,6 +4,7 @@ use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use App\Models\Post;
+use \App\Http\Controllers\AdminPostController;
 use \App\Http\Controllers\PostController;
 use Couchbase\User;
 use Illuminate\Support\Facades\File;
@@ -41,8 +42,19 @@ Route::post('logout',[SessionController::class ,'destroy'])->middleware('auth');
 
 Route::post('posts/{post:slug}/comments',[PostCommentsController::class , 'store'] ); // Create Route to Store The Comments
 
-Route::get('admin/posts/create' , [PostController::class , 'create'])->middleware('admin');
-Route::post('admin/posts' , [PostController::class , 'store'])->middleware('admin');
+
+// Admin
+Route::get('admin/posts/create' , [AdminPostController::class , 'create'])->middleware('admin');
+Route::post('admin/posts' , [AdminPostController::class , 'store'])->middleware('admin');
+Route::get('admin/posts' ,[AdminPostController::class , 'index'])->middleware('admin');
+Route::get('admin/posts/{post}/edit' , [AdminPostController::class , 'edit'])->middleware('admin'); // To  Page Edit Post
+Route::patch('admin/posts/{post}' , [AdminPostController::class , 'update'])->middleware('admin'); // To Edit Post
+Route::delete('admin/posts/{post}' , [AdminPostController::class , 'destroy'])->middleware('admin'); // To delete Post
+
+
+
+
+
 
 
 
